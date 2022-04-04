@@ -1,6 +1,7 @@
 package n_puzzle;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
 
@@ -65,20 +66,20 @@ public class Board {
 	}
 
 	public Iterable<Board> neighbors() {
-		Stack<Board> result = new Stack<>();
+		List<Board> result = new ArrayList<>();
 		int n = blocks.length;
 		int[] blankCoord = findBlankCoord(blocks);
 		if (blankCoord[0] - 1 >= 0) {
-			result.push(new Board(swapAbove(blocks, blankCoord)));
+			result.add(new Board(swapAbove(blocks, blankCoord)));
 		}
 		if (blankCoord[0] + 1 < n) {
-			result.push(new Board(swapBelow(blocks, blankCoord)));
+			result.add(new Board(swapBelow(blocks, blankCoord)));
 		}
 		if (blankCoord[1] + 1 < n) {
-			result.push(new Board(swapRight(blocks, blankCoord)));
+			result.add(new Board(swapRight(blocks, blankCoord)));
 		}
 		if (blankCoord[1] - 1 >= 0) {
-			result.push(new Board(swapLeft(blocks, blankCoord)));
+			result.add(new Board(swapLeft(blocks, blankCoord)));
 		}
 
 		return result;
